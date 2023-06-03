@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="calculator.css" />
+        <script>
+            
+            
+            function age(){
+                var d1 = document.getElementById("date").value;
+                var m1 = document.getElementById("month").value;
+                var y1 = document.getElementById("year").value;
+                
+                var date = new Date();
+                d2 = date.getDate();
+                m2 = date.getMonth()+1;
+                y2 = date.getFullYear();
+                
+                var month = [31, 28, 31, 30, 31, 30, 31, 31, 30,31,30, 31];
+                
+                if(d1 > d2){
+                    d2 = d2 + month[m2 - 1];
+                    m2 = m2 -1;
+                }
+                
+                if(m1 > m2){
+                    m2 = m2 + 12;
+                    y2 = y2 - 1;
+                }
+                
+                var y = y2 - y1;
+                var d = d2 - d1;
+                var m = m2 - m1;
+                
+                document.getElementById("years").innerHTML=y;
+                document.getElementById("months").innerHTML=m;
+                document.getElementById("days").innerHTML=d;
+                
+                
+            }
+        </script>
+    </head>
+    <body>
+    <center>
+        <div class="mainContainer">
+            <form>
+            <table>
+                <tr>
+                    <td class="title">DAY</td>
+                    <td class="title">MONTH</td>
+                    <td class="title">YEAR</td>
+                </tr>
+                <tr>
+                    <td><input size="3" type="text" placeholder="DD" required maxlength="2" class="box" id="date"  /></td>
+                    <td><input size="3" type="text" placeholder="MM" maxlength="2" class="box" id="month" required /></td>
+                    <td><input size="3" type="text" placeholder="YYYY" maxlength="4" class="box" id="year" required /></td>
+                </tr>
+            </table>
+            <div style="display: flex; margin-top: 14px;">
+                <div style="width: 88%;"><hr></div>
+                <img src="images/icon-arrow.svg" id="icon" onclick="age();" />
+            </div>
+                </form>
+            <div style="margin-top: -8px;">
+                <p class="text"><span id="years"></span> Years</p>
+                <p class="text"><span id="months"></span> months</p>
+                <p class="text"><span id="days"></span> days</p>
+            </div>
+        </div>
+        </center>
+    </body>
+    
+</html>
